@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CRUD - Artigo{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mb-5 mt-5">Criar novo artigo</h1>
+
+        {{ include('artigo/_form.html.twig') }}
+
+        <a href="{{ path('artigo_index') }}" class="btn btn-primary mt-5">Voltar para a lista</a>
+    </div>
+{% endblock %}

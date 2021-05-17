@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CRUD - Artigo{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mb-5 mt-5">Editar Atigo</h1>
+
+        {{ include('artigo/_form.html.twig', {'button_label': 'Atualizar'}) }}
+
+        <div class="mt-3">
+            <form method="post" action="{{ path('artigo_delete', {'id': artigo.id}) }}" onsubmit="return confirm('Você tem certeza que quer deletar este item?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ artigo.id) }}">
+                <button class="btn btn-danger">Deletar</button>
+            </form>
+        </div>
+
+        <a href="{{ path('artigo_index') }}" class="btn btn-primary mt-5">Voltar para a lista</a>
+    </div>
+{% endblock %}

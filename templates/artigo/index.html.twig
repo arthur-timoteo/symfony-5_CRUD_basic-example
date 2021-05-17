@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CRUD - Artigos{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-5">Lista de Artigos</h1>
+
+        <table class="table table-striped mt-5">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Categoria</th>
+                    <th>Título</th>
+                    <th>Texto</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for artigo in artigos %}
+                <tr>
+                    <td>{{ artigo.id }}</td>
+                    <td>{{ artigo.categoria }}</td>
+                    <td>{{ artigo.titulo }}</td>
+                    <td>{{ artigo.texto }}</td>
+                    <td>
+                        <a href="{{ path('artigo_show', {'id': artigo.id}) }}" class="btn btn-secondary">Ver</a>
+                        <a href="{{ path('artigo_edit', {'id': artigo.id}) }}" class="btn btn-warning">Editar</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Nenhum artigo cadastrado</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('artigo_new') }}" class="btn btn-success">Criar novo</a>
+    </div>
+{% endblock %}
